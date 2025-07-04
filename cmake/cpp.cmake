@@ -15,12 +15,6 @@ if(NOT BUILD_CXX)
   return()
 endif()
 
-if(DEFINED XPLPC_TARGET)
-  macro(install)
-    # do nothing, XPLPC only needs build, not install/export
-  endmacro()
-endif()
-
 # Basic type
 include(CMakePushCheckState)
 cmake_push_check_state(RESET)
@@ -624,9 +618,11 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   )
 
+if(NOT DEFINED XPLPC_TARGET)
 install(EXPORT ${PROJECT_NAME}Targets
   NAMESPACE ${PROJECT_NAMESPACE}::
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+endif()
 install(DIRECTORY ortools
   TYPE INCLUDE
   COMPONENT Devel
