@@ -15,6 +15,12 @@ if(NOT BUILD_CXX)
   return()
 endif()
 
+if(DEFINED XPLPC_TARGET)
+  macro(install)
+    # do nothing, XPLPC only needs build, not install/export
+  endmacro()
+endif()
+
 # Basic type
 include(CMakePushCheckState)
 cmake_push_check_state(RESET)
