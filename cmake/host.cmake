@@ -47,7 +47,7 @@ add_custom_target(host_tools
 
 add_executable(host_protoc IMPORTED GLOBAL)
 set_target_properties(host_protoc PROPERTIES
-  IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/host_tools/bin/protoc)
+  IMPORTED_LOCATION ${PROTOBUF_PROTOC_EXECUTABLE})
 
 add_dependencies(host_protoc host_tools)
 set(PROTOC_PRG host_protoc)
